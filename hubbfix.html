@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HubbFIX • HubbCONNECT Beta</title><link rel="stylesheet" href="./assets/css/style.css"></head>
+<body data-page="hubbfix"><a class="skip" href="#content">Skip to content</a><div class="beta" aria-hidden="true">BETA • DEMO ONLY</div>
+<header><div class="container">
+<div style="display:flex;align-items:center;gap:12px"><img src="./assets/img/logo.svg" alt="HubbCONNECT" style="height:40px"><div>
+<h1 style="margin:0">HubbCONNECT — Agnostic Beta 2</h1><p style="margin:.25rem 0 0">Modern municipal workflows, without the extra work.</p></div></div>
+<nav><a href="./index.html">Home</a><a href="./hubbfix.html">HubbFIX</a><a href="./licensing.html">Licensing</a><a href="./ap_turnover.html">AP / Turnover</a><a href="./cip.html">CIP</a><a href="./budget.html">Budget</a><a href="./about.html">About</a><a href="./contact.html">Contact</a></nav>
+</div></header><main id="content" class="container">
+<div class="grid">
+  <div class="card"><h3>Submit a Request</h3>
+    <form id="hf-form">
+      <div class="form-row">
+        <div><label for="request_type">Request Type</label>
+          <select id="request_type" name="request_type" required>
+            <option value="Pothole">Pothole</option><option value="Sign Down">Sign Down</option><option>Tree/Brush</option><option>ADA Ramp Repair</option><option>HVAC Noise</option>
+          </select></div>
+        <div><label for="priority">Priority</label>
+          <select id="priority" name="priority"><option>Low</option><option>Medium</option><option>High</option></select></div>
+      </div>
+      <label for="location">Location</label><input id="location" name="location" placeholder="123 Main St or Facility name">
+      <label for="details">Details</label><textarea id="details" name="details" rows="3" placeholder="What should we know?"></textarea>
+      <div class="form-row">
+        <div><label for="dept">Department</label><select id="dept" name="dept"><option>DPW</option><option>Facilities</option></select></div>
+        <div><label for="contact_email">Contact Email (demo)</label><input id="contact_email" name="contact_email" type="email" placeholder="you@mapleford.gov"></div>
+      </div>
+      <div class="no-print" style="display:flex;gap:10px;align-items:center;margin-top:10px"><button class="btn" type="submit">Submit (Demo)</button><span class="tag">No real submission</span></div>
+    </form>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center"><h3>Queue</h3>
+      <div><label for="hf-filter-status" class="visually-hidden">Filter by status</label>
+        <select id="hf-filter-status" class="no-print"><option value="all">All</option><option value="1">Submitted</option><option value="2">In Review</option><option value="3">Assigned</option><option value="4">In Progress</option><option value="5">Resolved</option></select>
+      </div>
+    </div>
+    <div class="table-wrap"><table id="hf-queue"><thead><tr><th>Priority</th><th>Type</th><th>Location</th><th>Details</th><th>Status</th><th class="no-print">Actions</th></tr></thead><tbody></tbody></table></div>
+  </div>
+</div>
+</main><footer class="container"><p><span class="tag">Agnostic Demo</span> No real submissions. In production, this front-end connects to Power Automate and writes to governed OneDrive/SharePoint libraries.</p></footer>
+<div class="toast" role="status" aria-live="polite"></div><script src="./assets/js/app.js"></script></body></html>

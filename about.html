@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About • HubbCONNECT Beta</title><link rel="stylesheet" href="./assets/css/style.css"></head>
+<body data-page="about"><a class="skip" href="#content">Skip to content</a><div class="beta" aria-hidden="true">BETA • DEMO ONLY</div>
+<header><div class="container">
+<div style="display:flex;align-items:center;gap:12px"><img src="./assets/img/logo.svg" alt="HubbCONNECT" style="height:40px"><div>
+<h1 style="margin:0">HubbCONNECT — Agnostic Beta 2</h1><p style="margin:.25rem 0 0">Modern municipal workflows, without the extra work.</p></div></div>
+<nav><a href="./index.html">Home</a><a href="./hubbfix.html">HubbFIX</a><a href="./licensing.html">Licensing</a><a href="./ap_turnover.html">AP / Turnover</a><a href="./cip.html">CIP</a><a href="./budget.html">Budget</a><a href="./about.html">About</a><a href="./contact.html">Contact</a></nav>
+</div></header><main id="content" class="container">
+<div class="grid">
+  <div class="card"><h3>What is HubbCONNECT (Agnostic Beta 2)?</h3>
+    <p>A pure front-end demo of municipal workflows. In production, we wire Power Automate → OneDrive/SharePoint for governed storage, retention, and approvals. The front-end is vendor-agnostic and designed to be dropped into your municipal stack.</p>
+    <p><b>Modules:</b> HubbFIX (DPW/Facilities), Licensing, AP/Turnover Lite, CIP, Budget Explorer.</p></div>
+  <div class="card"><h3>Storage Envelope</h3>
+<pre class="code">{
+  "version": "1.0",
+  "module": "hubbfix|licensing|ap_turnover|cip",
+  "ticket": "8-char slug",
+  "path": "/HubbCONNECT/{module}/{year}/{date}/{ticket}/",
+  "meta": { "created_at": "YYYY-MM-DDTHHMMSS" },
+  "payload": { "... form data ..." },
+  "files": [ { "filename": "...", "contentBase64": "...", "contentType": "..." } ]
+}</pre></div>
+  <div class="card"><h3>Power Automate (OneDrive/SharePoint) — Reference</h3>
+    <ol>
+      <li>Trigger: <i>When an HTTP request is received</i> (paste schema below).</li>
+      <li>Create folder: root + <code>body.path</code> if not exists.</li>
+      <li>Create file: <code>payload_{ticket}.json</code> with <code>body.payload</code>.</li>
+      <li>Optional: Create file: <code>summary_{ticket}.html</code> based on your template.</li>
+      <li><i>Apply to each</i> <code>files[]</code>: create under <code>attachments/</code>.</li>
+      <li>Respond 200 with <code>{ok:true, path:&lt;createdPath&gt;}</code>.</li>
+    </ol>
+    <p>Keep your Flow URL secret. In this demo, submission is disabled.</p></div>
+  <div class="card"><h3>HTTP Request Schema</h3>
+<pre class="code">{
+  "type":"object",
+  "properties":{
+    "version":{"type":"string"},
+    "module":{"type":"string"},
+    "ticket":{"type":"string"},
+    "path":{"type":"string"},
+    "meta":{"type":"object"},
+    "payload":{"type":"object"},
+    "files":{"type":"array","items":{
+      "type":"object",
+      "properties":{"filename":{"type":"string"},"contentBase64":{"type":"string"},"contentType":{"type":"string"}},
+      "required":["filename","contentBase64","contentType"]
+    }}
+  },
+  "required":["module","ticket","path","payload"]
+}</pre></div>
+</div>
+</main><footer class="container"><p><span class="tag">Agnostic Demo</span> No real submissions. In production, this front-end connects to Power Automate and writes to governed OneDrive/SharePoint libraries.</p></footer>
+<div class="toast" role="status" aria-live="polite"></div><script src="./assets/js/app.js"></script></body></html>

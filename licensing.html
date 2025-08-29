@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Licensing • HubbCONNECT Beta</title><link rel="stylesheet" href="./assets/css/style.css"></head>
+<body data-page="licensing"><a class="skip" href="#content">Skip to content</a><div class="beta" aria-hidden="true">BETA • DEMO ONLY</div>
+<header><div class="container">
+<div style="display:flex;align-items:center;gap:12px"><img src="./assets/img/logo.svg" alt="HubbCONNECT" style="height:40px"><div>
+<h1 style="margin:0">HubbCONNECT — Agnostic Beta 2</h1><p style="margin:.25rem 0 0">Modern municipal workflows, without the extra work.</p></div></div>
+<nav><a href="./index.html">Home</a><a href="./hubbfix.html">HubbFIX</a><a href="./licensing.html">Licensing</a><a href="./ap_turnover.html">AP / Turnover</a><a href="./cip.html">CIP</a><a href="./budget.html">Budget</a><a href="./about.html">About</a><a href="./contact.html">Contact</a></nav>
+</div></header><main id="content" class="container">
+<div class="card"><h3>General License Application (Demo)</h3>
+  <form id="lic-form">
+    <div class="form-row">
+      <div><label for="lic-type">License Type</label><select id="lic-type" required></select></div>
+      <div><label for="biz-email">Contact Email</label><input id="biz-email" name="contact_email" type="email" placeholder="applicant@business.com"></div>
+    </div>
+    <div id="lic-dynamic" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))"></div>
+    <hr class="hr"><div id="lic-uploads"></div><hr class="hr">
+    <h4>Approval Path</h4><div id="lic-approval"></div>
+    <div style="display:flex;gap:10px;margin-top:12px" class="no-print">
+      <button type="button" class="btn" id="btn-lic-summary">Generate Summary</button>
+      <button type="button" class="btn ghost" id="btn-lic-export">Export to OneDrive (Stub)</button>
+      <button type="button" class="btn secondary" onclick="window.print()">Print</button>
+    </div>
+  </form>
+</div>
+<div id="lic-summary"></div>
+</main><footer class="container"><p><span class="tag">Agnostic Demo</span> No real submissions. In production, this front-end connects to Power Automate and writes to governed OneDrive/SharePoint libraries.</p></footer>
+<div class="toast" role="status" aria-live="polite"></div><script src="./assets/js/app.js"></script></body></html>

@@ -1,0 +1,70 @@
+{
+  "name": "HubbCONNECT_Envelope_to_SharePoint",
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": {
+        "method": "POST",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "version": {
+              "type": "string"
+            },
+            "module": {
+              "type": "string"
+            },
+            "ticket": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "meta": {
+              "type": "object"
+            },
+            "payload": {
+              "type": "object"
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "filename": {
+                    "type": "string"
+                  },
+                  "contentBase64": {
+                    "type": "string"
+                  },
+                  "contentType": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "filename",
+                  "contentBase64",
+                  "contentType"
+                ]
+              }
+            }
+          },
+          "required": [
+            "module",
+            "ticket",
+            "path",
+            "payload"
+          ]
+        }
+      }
+    }
+  },
+  "actions_outline": [
+    "Create folder at body.path",
+    "Create payload_{ticket}.json",
+    "(Optional) Create summary_{ticket}.html",
+    "Loop files[] and create attachments/*",
+    "Return 200"
+  ]
+}
