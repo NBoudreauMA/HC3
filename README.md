@@ -1,5 +1,8 @@
-# HubbCONNECT — Agnostic Beta 2 (Lite rebuild)
+# HubbCONNECT WOW Theme Pack
+Drop-in modern theme for your Agnostic Beta 2 build.
 
-Generated: 2025-08-29
+## Use
+<link rel='stylesheet' href='assets/css/hubb-wow.css'>
+<script src='assets/js/wow.js' defer></script>
 
-Includes site skeleton, data, template, and flow helper JSON.
+© 2025 HubbCONNECT
